@@ -197,4 +197,28 @@ public class FuelCheckerWebStoryTest {
 
     }
 
+    @Test(timeOut=60000)
+    public void test_T5() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("Info")));
+        driver.findElement(By.id("Info")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("body")));
+        String bodyText = driver.findElement(By.id("body")).getText();
+        assertTrue(bodyText.contains("Standard tank capacity: 1200 litres."));
+        assertTrue(bodyText.contains("High safety tank capacity: 800 litres."));
+    }
+
+    @Test(timeOut=60000)
+    public void test_T6() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("exitlink")));
+        driver.findElement(By.id("exitlink")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("body")));
+        String bodyText = driver.findElement(By.id("body")).getText();
+        assertTrue(bodyText.contains("Thank you for using FuelChecker"));
+
+    }
+
 }
