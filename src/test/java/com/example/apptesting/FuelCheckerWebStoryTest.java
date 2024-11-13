@@ -117,5 +117,84 @@ public class FuelCheckerWebStoryTest {
 
 
     //Add your tests here
+    @Test(timeOut=60000)
+    public void test_T2() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("litres")));
+        driver.findElement(By.id("litres")).sendKeys("400");
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("highsafety")));
+        if (driver.findElement( By.id("highsafety")).isSelected()!=true)
+            driver.findElement( By.id("highsafety")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Enter")));
+        driver.findElement( By.id("Enter")).click();
+        wait.until(ExpectedConditions.titleIs("Results"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("result")));
+        assertEquals( driver.findElement( By.id("result")).getAttribute("value"),"Fuel fits in tank." );
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Continue")));
+        driver.findElement( By.id("Continue")).click();
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+
+    }
+
+    @Test(timeOut=60000)
+    public void test_T3() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("litres")));
+        driver.findElement(By.id("litres")).sendKeys("2000");
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("highsafety")));
+        if (driver.findElement( By.id("highsafety")).isSelected()!=false)
+            driver.findElement( By.id("highsafety")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Enter")));
+        driver.findElement( By.id("Enter")).click();
+        wait.until(ExpectedConditions.titleIs("Results"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("result")));
+        assertEquals( driver.findElement( By.id("result")).getAttribute("value"),"Fuel does not fit in tank." );
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Continue")));
+        driver.findElement( By.id("Continue")).click();
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+
+    }
+
+    @Test(timeOut=60000)
+    public void test_T4() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("litres")));
+        driver.findElement(By.id("litres")).sendKeys("1000");
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("highsafety")));
+        if (driver.findElement( By.id("highsafety")).isSelected()!=true)
+            driver.findElement( By.id("highsafety")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Enter")));
+        driver.findElement( By.id("Enter")).click();
+        wait.until(ExpectedConditions.titleIs("Results"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("result")));
+        assertEquals( driver.findElement( By.id("result")).getAttribute("value"),"Fuel does not fit in tank." );
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Continue")));
+        driver.findElement( By.id("Continue")).click();
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+
+    }
+
+    @Test(timeOut=60000)
+    public void test_T7() {
+
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("litres")));
+        driver.findElement(By.id("litres")).sendKeys("xxx");
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("highsafety")));
+        if (driver.findElement( By.id("highsafety")).isSelected()!=true)
+            driver.findElement( By.id("highsafety")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Enter")));
+        driver.findElement( By.id("Enter")).click();
+        wait.until(ExpectedConditions.titleIs("Results"));
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("result")));
+        assertEquals( driver.findElement( By.id("result")).getAttribute("value"),"Invalid data values." );
+        wait.until(ExpectedConditions.visibilityOfElementLocated( By.id("Continue")));
+        driver.findElement( By.id("Continue")).click();
+        wait.until(ExpectedConditions.titleIs("Fuel Checker"));
+
+    }
 
 }
